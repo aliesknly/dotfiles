@@ -1,0 +1,172 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-bottom": -10,
+  "spacing": 0,
+  "modules-left": ["hyprland/workspaces"],
+
+  "modules-center": ["clock"],
+
+  "modules-right": [
+    //  "custom/pomodoro",
+    "cpu",
+    "memory",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "tray",
+    "group/grouppower",
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+    },
+    "persistent-workspaces": {
+      "*": [1, 2],
+    },
+  },
+
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}",
+    "format-connected": "{icon}",
+    "format-icons": {
+      "on": "󰂯",
+      "off": "󰂲",
+      "connected": "󰂱",
+    },
+    "on-click": "blueman-manager",
+    "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}\t{device_battery_percentage}% ",
+    "tooltip-format": "{controller_alias}\t\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+  },
+
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50,
+  },
+
+  "clock": {
+    "timezone": "America/New_York",
+    "tooltip": false,
+    "format": "{:%H:%M:%S  -  %A, %d}",
+    "interval": 1,
+  },
+
+  "network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰤠 ",
+    "interval": 5,
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "nm-connection-editor",
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "on-click": "ghostty -e htop",
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "tooltip-format": "Memory",
+  },
+
+  "custom/uptime": {
+    "format": "{}",
+    "format-icon": [""],
+    "tooltip": false,
+    "interval": 1600,
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh",
+  },
+
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["", "󰃜", "󰃛", "󰃞", "󰃝", "󰃟", "󰃠"],
+    "tooltip": false,
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+
+  "battery": {
+    "interval": 2,
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""],
+  },
+
+  "custom/pomodoro": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "waybar-module-pomodoro --no-work-icons",
+    "on-click": "waybar-module-pomodoro toggle",
+    "on-click-right": "waybar-module-pomodoro reset",
+  },
+
+  "tray": {
+    "icon-size": 17,
+    "spacing": 6,
+  },
+
+  "group/grouppower": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+    },
+    "modules": [
+      "custom/power", // First element is the "group leader" and won't ever be hidden
+      "custom/quit",
+      "custom/reboot",
+    ],
+  },
+  "custom/quit": {
+    "format": "<span color='#00450b'>󰗼</span>",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit",
+  },
+  "custom/reboot": {
+    "format": "<span color='#FFD700'>  </span>",
+    "tooltip": false,
+    "on-click": "reboot",
+  },
+  "custom/power": {
+    "format": "<span color='#FF4040'>  </span>",
+    "tooltip": false,
+    "on-click": "shutdown now",
+  },
+}
