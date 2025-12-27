@@ -119,3 +119,8 @@ alias stowh='stow -t ~'
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+if command -v tmux >/dev/null 2>&1; then
+  # If not inside a tmux session, attach to a default session or create a new one
+    test -z "$TMUX" && (tmux attach -t Develop || tmux new-session -s Develop)
+fi
