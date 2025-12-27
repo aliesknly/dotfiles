@@ -104,17 +104,18 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias nvc="cd $HOME/.config/nvim && nvim"
-alias ang="cd $HOME/dev/angular && ls"
-alias dev="cd $HOME/dev && ls"
+alias ang="cd $HOME/Dev/angular && ls"
+alias dev="cd $HOME/Dev && ls"
 alias obs='OBS_USE_WAYLAND=0 QT_QPA_PLATFORM=xcb obs'
 alias stowh='stow -t ~'
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+#source <(ng completion script)
 
 # bun completions
 [ -s "/home/knly/.bun/_bun" ] && source "/home/knly/.bun/_bun"
 
+# bun
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
