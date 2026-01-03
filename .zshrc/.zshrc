@@ -124,3 +124,9 @@ if command -v tmux >/dev/null 2>&1; then
   # If not inside a tmux session, attach to a default session or create a new one
     test -z "$TMUX" && (tmux attach -t Develop || tmux new-session -s Develop)
 fi
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
