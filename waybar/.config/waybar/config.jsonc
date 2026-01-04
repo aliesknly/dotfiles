@@ -9,8 +9,9 @@
 
   "modules-right": [
     //  "custom/pomodoro",
-    "cpu",
-    "memory",
+    "custom/open",
+    //"cpu",
+    //"memory",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -21,13 +22,27 @@
   ],
 
   "hyprland/workspaces": {
-    "format": "{name}: {icon}",
+    "format": "{name}:  {windows}",
+    "format-window-separator": "  ",
+    "window-rewrite-default": "󱃻",
+    "window-rewrite": {
+      "kitty": "",
+      "obs": "󰃽",
+      "discord": "",
+      "nautilus": "",
+      "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+      //"class<.*chrome*.> title<.*github.*>": "",
+      "class<.*chrome*.>": "󰊯",
+    },
     "format-icons": {
+      "1": "",
+      "2": "󰠿",
+      "3": "",
       "active": "",
       "default": "",
     },
     "persistent-workspaces": {
-      "*": [1, 2],
+      "*": [1, 2, 3],
     },
   },
 
@@ -168,5 +183,9 @@
     "format": "<span color='#FF4040'>  </span>",
     "tooltip": false,
     "on-click": "shutdown now",
+  },
+  "custom/open": {
+    "on-click": "$HOME/.config/waybar/scripts/clipboard.sh",
+    "format": "<span>󱓥</span>",
   },
 }
