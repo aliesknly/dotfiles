@@ -4,7 +4,7 @@
   "margin-bottom": -10,
   "spacing": 0,
   "modules-left": ["hyprland/workspaces"],
-
+  "output": ["eDP-1"],
   "modules-center": ["clock"],
 
   "modules-right": [
@@ -22,7 +22,7 @@
   ],
 
   "hyprland/workspaces": {
-    "format": "{name}:  {windows}",
+    "format": "{name}: {windows}",
     "format-window-separator": "  ",
     "window-rewrite-default": "󱃻",
     "window-rewrite": {
@@ -38,8 +38,8 @@
       "1": "",
       "2": "󰠿",
       "3": "",
-      "active": "",
-      "default": "",
+      // "active": "",
+      // "default": "",
     },
     "persistent-workspaces": {
       "*": [1, 2, 3],
