@@ -108,7 +108,7 @@ alias ang="cd $HOME/Dev/angular && ls"
 alias dev="cd $HOME/Dev && ls"
 alias obs='OBS_USE_WAYLAND=0 QT_QPA_PLATFORM=xcb obs'
 alias stowh='stow -t ~'
-
+alias gga="$HOME/linuxbrew/.linuxbrew/bin/gga"
 # Load Angular CLI autocompletion.
 #source <(ng completion script)
 
@@ -130,3 +130,4 @@ fi
 source <(ng completion script)
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="$HOME/.local/bin:$PATH"

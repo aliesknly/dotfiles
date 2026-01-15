@@ -161,3 +161,9 @@ function SaveFile()
     vim.notify("Error: " .. err, vim.log.levels.ERROR) -- Show the error message if it fails
   end
 end
+
+-- Spell languaje en and es
+
+vim.keymap.set("n", "<leader>ts", function()
+  vim.opt.spell = not vim.opt.spell:get()
+end, { desc = "Toggle spell checking" })
