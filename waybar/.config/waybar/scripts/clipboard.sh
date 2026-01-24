@@ -1,2 +1,2 @@
 #! /bin/bash
-kitty --class clipse -e 'clipse'
+kitty --class clipboard -e 'clipse'

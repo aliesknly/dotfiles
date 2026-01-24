@@ -9,9 +9,9 @@
 
   "modules-right": [
     //  "custom/pomodoro",
-    "custom/open",
-    //"cpu",
-    //"memory",
+    "custom/clipboard",
+    "cpu",
+    "memory",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -42,7 +42,7 @@
       // "default": "",
     },
     "persistent-workspaces": {
-      "*": [1, 2, 3],
+      "*": [1, 2, 3, 4, 5],
     },
   },
 
@@ -56,7 +56,8 @@
       "off": "󰂲",
       "connected": "󰂱",
     },
-    "on-click": "blueman-manager",
+    "on-click": "$HOME/.config/waybar/scripts/bluetooth.sh",
+    "format-device-preference": ["device1", "device2"],
     "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}\t{device_battery_percentage}% ",
     "tooltip-format": "{controller_alias}\t\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -87,14 +88,14 @@
     "format-disconnected": "󰤠 ",
     "interval": 5,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "nm-connection-editor",
+    "on-click": "$HOME/.config/waybar/scripts/wifi.sh",
   },
 
   "cpu": {
     "interval": 1,
     "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "on-click": "ghostty -e htop",
+    "on-click": "$HOME/.config/waybar/scripts/process.sh",
   },
 
   "memory": {
@@ -123,7 +124,7 @@
     "format-icons": {
       "default": ["", "", " "],
     },
-    "on-click": "pavucontrol",
+    "on-click": "$HOME/.config/waybar/scripts/audio.sh",
   },
 
   "battery": {
@@ -184,7 +185,7 @@
     "tooltip": false,
     "on-click": "shutdown now",
   },
-  "custom/open": {
+  "custom/clipboard": {
     "on-click": "$HOME/.config/waybar/scripts/clipboard.sh",
     "format": "<span>󱓥</span>",
   },

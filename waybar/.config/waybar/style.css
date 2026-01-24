@@ -147,7 +147,7 @@
 #custom-grouppower,
 #tray,
 #cpu,
-#custom-open,
+#custom-clipboard,
 #custom-power,
 #custom-quit,
 #custom-reboot,
@@ -217,7 +217,7 @@
   margin-left: 0px;
 }
 
-#custom-open {
+#custom-clipboard {
   color: #0be007;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
