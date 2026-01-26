@@ -13,9 +13,10 @@ return {
   opts = {
     workspaces = {
       {
-        name = "Study",
-        path = os.getenv("HOME") .. "/Documents/study",
+        name = "Develop-Documents",
+        path = "~/Dev/ObsidianVaults/Develop-Documents",
       },
+      { name = "Documents", path = "~/Documents/" },
     },
     completition = {
       cmp = true,
@@ -25,27 +26,27 @@ return {
       name = "snacks.pick",
     },
     -- Optional, define your own callbacks to further customize behavior.
-    callbacks = {
-      -- Runs anytime you enter the buffer for a note.
-      enter_note = function(client, note)
-        if not note then
-          return
-        end
-        -- local bufnr = vim.api.nvim_get_current_buf()
-        -- Setup keymaps for obsidian notes
-        vim.keymap.set("n", "gf", function()
-          return require("obsidian").util.gf_passthrough()
-        end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
+    -- callbacks = {
+    -- Runs anytime you enter the buffer for a note.
+    --   enter_note = function(client, note)
+    --     if not note then
+    --       return
+    --     end
+    -- local bufnr = vim.api.nvim_get_current_buf()
+    -- Setup keymaps for obsidian notes
+    --     vim.keymap.set("n", "gf", function()
+    --       return require("obsidian").util.gf_passthrough()
+    --    end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
 
-        vim.keymap.set("n", "<leader>ch", function()
-          return require("obsidian").util.toggle_checkbox()
-        end, { buffer = note.bufnr, desc = "Toggle checkbox" })
+    --     vim.keymap.set("n", "<leader>ch", function()
+    --       return require("obsidian").util.toggle_checkbox()
+    --     end, { buffer = note.bufnr, desc = "Toggle checkbox" })
 
-        vim.keymap.set("n", "<cr>", function()
-          return require("obsidian").util.smart_action()
-        end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
-      end,
-    },
+    --     vim.keymap.set("n", "<cr>", function()
+    --       return require("obsidian").util.smart_action()
+    --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
+    --   end,
+    -- },
 
     -- Settings for templates
     templates = {
