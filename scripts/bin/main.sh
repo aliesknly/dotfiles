@@ -12,6 +12,7 @@ source "$SCRIPT_DIR/../lib/validate.sh"
 source "$SCRIPT_DIR/../lib/add-config-to-my-repo.sh"
 source "$SCRIPT_DIR/../lib/restore_my_own_config.sh"
 source "$SCRIPT_DIR/../lib/config-fonts.sh"
+source "$SCRIPT_DIR/../lib/install-oh-my-zsh.sh"
 
 main() {
   log_info "start script"

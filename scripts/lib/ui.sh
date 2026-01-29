@@ -11,12 +11,13 @@ run_ui() {
     echo "4) Update Archlinux"
     echo "5) Add config app(s) to my config"
     echo "6) Install nerd font (IosevkaTerm)"
+    echo "7) Install oh-my-zsh"
     echo "0) Exit"
     echo "---------------------------------"
   }
 
   read_option() {
-    read -rp "Select one option(1-6) or 0 to exit: " option
+    read -rp "Select (1-7) or 0 to exit: " option
   }
 
   while true; do
@@ -30,6 +31,7 @@ run_ui() {
     4) sudo pacman -Suy --noconfirm ;;
     5) add_config_to_my_dots ;;
     6) install_nerd_fonts ;;
+    7) install_oh_my_zsh ;;
     0)
       echo "Good bye"
       break
