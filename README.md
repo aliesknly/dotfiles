@@ -16,7 +16,7 @@
 - `neovim` -> Terminal editor
 - `git` -> Version manager
 - `go` -> Programming Language
-- `volta` -> Node version manager
+- `volta` or `nvm` -> Node version manager
 - `bun` -> Package manager
 - `git` -> Version manager
 - `obsidian` -> Note-taking application
@@ -27,3 +27,4 @@
 - `docker` -> Container manager
 - `lazydocker` -> Terminal interface for Docker
 - `lazygit` -> Terminal interface for Git
+- `hyprshot` -> Create screen shots
