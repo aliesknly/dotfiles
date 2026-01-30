@@ -1,27 +1,31 @@
 #!/usr/bin/env bash
+main() {
 
-WALLPAPER_DIR="$HOME/Pictures/wallpeaper"
+  WALLPAPER_DIR="$HOME/Pictures/wallpeaper"
 
-# Get currently loaded wallpapers (paths only)
-CURRENT_WALLS=$(hyprctl hyprpaper listloaded | awk '{print $2}')
+  # Get currently loaded wallpapers (paths only)
+  CURRENT_WALLS=$(hyprctl hyprpaper listloaded | awk '{print $2}')
 
-# Get monitors
-mapfile -t MONITORS < <(hyprctl monitors -j | jq -r '.[].name')
+  # Get monitors
+  mapfile -t MONITORS < <(hyprctl monitors -j | jq -r '.[].name')
 
-# Get shuffled wallpapers excluding current ones
-mapfile -t WALLPAPERS < <(
-  find "$WALLPAPER_DIR" -type f \
-    $(printf '! -path %q ' $CURRENT_WALLS) | shuf
-)
+  # Get shuffled wallpapers excluding current ones
+  mapfile -t WALLPAPERS < <(
+    find "$WALLPAPER_DIR" -type f \
+      $(printf '! -path %q ' $CURRENT_WALLS) | shuf
+  )
 
-i=0
-for MONITOR in "${MONITORS[@]}"; do
-  WALL="${WALLPAPERS[$i]}"
+  i=0
+  for MONITOR in "${MONITORS[@]}"; do
+    WALL="${WALLPAPERS[$i]}"
 
-  [[ -z "$WALL" ]] && break
+    [[ -z "$WALL" ]] && break
 
-  hyprctl hyprpaper preload "$WALL"
-  hyprctl hyprpaper wallpaper "$MONITOR,$WALL"
+    hyprctl hyprpaper preload "$WALL"
+    hyprctl hyprpaper wallpaper "$MONITOR,$WALL"
 
-  ((i++))
-done
+    ((i++))
+  done
+}
+
+main "$@"
