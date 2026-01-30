@@ -178,12 +178,13 @@
   "custom/reboot": {
     "format": "<span color='#FFD700'>  </span>",
     "tooltip": false,
-    "on-click": "reboot",
+    "on-click": "hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"
   },
   "custom/power": {
     "format": "<span color='#FF4040'>  </span>",
     "tooltip": false,
-    "on-click": "shutdown now",
+    "on-click": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"
+,
   },
   "custom/clipboard": {
     "on-click": "$HOME/.config/waybar/scripts/clipboard.sh",
