@@ -2,6 +2,7 @@ return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = false,
+  ui = { enable = false },
   enabled = function()
     -- Disable Obsidian when running from Oil Simple (to avoid path issues in Zed context)
     return not vim.g.disable_obsidian
@@ -11,12 +12,20 @@ return {
     "nvim-lua/plenary.nvim",
   },
   opts = {
+    legacy_commands = false,
     workspaces = {
       {
-        name = "Develop-Documents",
-        path = "~/Dev/ObsidianVaults/Develop-Documents",
+        name = "Personal",
+        path = "~/Documents/obsidian/Personal",
       },
-      { name = "Documents", path = "~/Documents/" },
+      {
+        name = "Church",
+        path = "~/Documents/obsidian/Church",
+      },
+      {
+        name = "Work",
+        path = "~/Documents/obsidian/Work",
+      },
     },
     completition = {
       cmp = true,
@@ -25,30 +34,27 @@ return {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
       name = "snacks.pick",
     },
-    -- Optional, define your own callbacks to further customize behavior.
-    -- callbacks = {
-    -- Runs anytime you enter the buffer for a note.
-    --   enter_note = function(client, note)
-    --     if not note then
-    --       return
-    --     end
-    -- local bufnr = vim.api.nvim_get_current_buf()
-    -- Setup keymaps for obsidian notes
-    --     vim.keymap.set("n", "gf", function()
-    --       return require("obsidian").util.gf_passthrough()
-    --    end, { buffer = note.bufnr, expr = true, desc = "Obsidian follow link" })
-
-    --     vim.keymap.set("n", "<leader>ch", function()
-    --       return require("obsidian").util.toggle_checkbox()
-    --     end, { buffer = note.bufnr, desc = "Toggle checkbox" })
-
-    --     vim.keymap.set("n", "<cr>", function()
-    --       return require("obsidian").util.smart_action()
-    --     end, { buffer = note.bufnr, expr = true, desc = "Obsidian smart action" })
-    --   end,
-    -- },
-
     -- Settings for templates
+    note_id_func = function()
+      return os.date("%Y%m%d%H%M%S") .. "-" .. vim.fn.printf("%04x", math.random(0, 0xffff))
+    end,
+    frontmatter = {
+      func = function(note)
+        local title = note.title or (note.aliases and note.aliases[1]) or note.id
+        return {
+          id = note.id,
+          title = title,
+          aliases = title or note.aliases,
+          tags = note.tags,
+          created = os.date("%Y-%m-%d"),
+        }
+      end,
+    },
+
+    wiki_link_func = function(opts)
+      return string.format("[[%s|%s]]", opts.id, opts.title)
+    end,
+
     templates = {
       subdir = "templates", -- Subdirectory for templates
       date_format = "%Y-%m-%d-%a", -- Date format for templates

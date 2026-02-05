@@ -12,8 +12,14 @@ return {
       enabled = true, -- we expect your collaboration at least during the beta
       show_scores = true, -- to help us optimize the scoring system, feel free to share your scores!
     },
-    preview = {
-      line_numbers = true,
+    title = "Search Files(fff)",
+    layout = {
+      height = 0.8,
+      width = 0.8,
+      prompt_position = "top", -- or 'top'
+      preview_position = "right", -- or 'left', 'right', 'top', 'bottom'
+      preview_size = 0.5,
+      show_scrollbar = true, -- Show scrollbar for pagination
     },
   },
   -- No need to lazy-load with lazy.nvim.
