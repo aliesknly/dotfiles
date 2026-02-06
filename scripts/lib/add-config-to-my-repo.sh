@@ -26,32 +26,40 @@ add_config_to_my_dots() {
 
     for pkg in "${my_array[@]}"; do
 
-      local inverse_path="$stow_folder/${pkg}/${1}"
-      local convined_path_app="$HOME/$1/$pkg"
+      local inverse_path
+      local convined_path_app
 
-      if [[ -n "$1" ]]; then
-        if ! check_folder_exist "$convined_path_app"; then
-          log_error "$convined_path_app not exist"
-        else
-          mkdir -p "$inverse_path"
-          log_info "Created folder: ${inverse_path}"
-
-          if check_folder_exist "${inverse_path}"; then
-            mv "$convined_path_app" "$inverse_path"
-            log_info "Moved folder: ${inverse_path}"
-
-            if check_folder_exist "$stow_folder/$pkg"; then
-              use_stow_to_restore "$pkg"
-              log_info "Linked: ${pkg}"
-            else
-              log_error "Stow $pkg"
-            fi
-          else
-            log_error "Moved folder: ${inverse_path}"
-          fi
-        fi
+      # Create the route form copy to save
+      if [[ -z "$1" ]]; then
+        local convined_path_app="$HOME/$1/$pkg"
+        local inverse_path="$stow_folder/${pkg}/${1}"
+      else
+        local convined_path_app="$HOME/$pkg"
+        local inverse_path="$stow_folder/${pkg}"
       fi
 
+      # Check if the folder exist if not exist create
+      if check_folder_exist "$convined_path_app"; then
+        log_warn "$convined_path_app exits"
+      else
+        mkdir -p "$inverse_path"
+        log_info "Created folder: ${inverse_path}"
+      fi
+
+      # Move the config into new folder
+      if check_folder_exist "${inverse_path}"; then
+        mv "$convined_path_app" "$inverse_path"
+        log_info "Moved folder: ${inverse_path}"
+
+        if check_folder_exist "$stow_folder/$pkg"; then
+          use_stow_to_restore "$pkg"
+          log_info "Linked: ${pkg}"
+        else
+          log_error "Stow $pkg"
+        fi
+      else
+        log_error "Moved folder: ${inverse_path}"
+      fi
     done
   }
 
