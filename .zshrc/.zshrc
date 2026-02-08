@@ -127,10 +127,10 @@ alias gga="$HOME/linuxbrew/.linuxbrew/bin/gga"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-if command -v tmux >/dev/null 2>&1; then
-  # If not inside a tmux session, attach to a default session or create a new one
-    test -z "$TMUX" && (tmux attach -t Develop || tmux new-session -s Develop)
-fi
+#jjif command -v tmux >/dev/null 2>&1; then
+  # If not inside a tmux session, attach to a default session or create a new #one
+#    test -z "$TMUX" && (tmux attach -t Develop || tmux new-session -s Develop)
+#fi
 
 
 # Load Angular CLI autocompletion.
@@ -149,4 +149,3 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
