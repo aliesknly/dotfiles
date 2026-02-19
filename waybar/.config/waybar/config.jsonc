@@ -88,7 +88,7 @@
     "format-disconnected": "󰤠 ",
     "interval": 5,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "$HOME/.config/waybar/scripts/wifi.sh",
+    "on-click": "$HOME/.config/waybar/scripts/wireless.sh",
   },
 
   "cpu": {

@@ -113,7 +113,6 @@ source $ZSH/oh-my-zsh.sh
 alias nvc="cd $HOME/.config/nvim && nvim"
 alias ang="cd $HOME/Dev/angular && ls"
 alias dev="cd $HOME/Dev && ls"
-alias obs='OBS_USE_WAYLAND=0 QT_QPA_PLATFORM=xcb obs'
 alias stowh='stow -t ~'
 alias gga="$HOME/linuxbrew/.linuxbrew/bin/gga"
 # Load Angular CLI autocompletion.

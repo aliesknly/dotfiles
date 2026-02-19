@@ -1,2 +1,2 @@
-#! /usr/bin/dev bash
+#! /usr/bin/env bash
 kitty --class wireless -e 'impala'
