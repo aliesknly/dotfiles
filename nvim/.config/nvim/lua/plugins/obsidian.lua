@@ -52,9 +52,9 @@ return {
       end,
     },
 
-    wiki_link_func = function(opts)
-      return string.format("[[%s|%s]]", opts.id, opts.title)
-    end,
+    -- wiki_link_func = function(opts)
+    --    return string.format("[[%s|%s]]", opts.id, opts.title)
+    --  end,
 
     templates = {
       subdir = "templates", -- Subdirectory for templates
