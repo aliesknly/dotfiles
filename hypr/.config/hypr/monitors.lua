@@ -1,26 +1,4 @@
---[[
---
-################
-### MONITORS ###
-################
-
-# See https://wiki.hyprland.org/Configuring/Monitors/
-#monitor=,preferred,auto,auto
-# Monitor 1 - eDP-1 (right)
-#monitor = eDP-1, 1920x1080@144, 1920x0, 1
-
-# Monitor 3 - DP-6 (left-down)
-#monitor = DP-6, 1920x1080@60, 0x0, 1
-
-# Monitor 2 - DP-5 (left-up)
-#monitor = DP-5, 1920x1080@60, 0x-1080, 1
-
-# Workspaces
-workspace=1,monitor:eDP-1
-workspace=2,monitor:DP-2
-#workspace=3,minitor:DP-5
-
---]]
+-- MONITORS
 
 Hypr.monitor({
 	output = "eDP-1",
